@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    User Login
+{% endblock %}
+
+
+{% block header %} {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+          <div class="card-body p-4 p-sm-5">
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <div class="text-center mt-3">
+         <h3 class="card-title text-center mb-5 fw-light fs-5">Sign In</h3>
+            <form>
+    </div>
+
+    <div class="card p-2 bg-white">
+
+    <label for="inputUsername">ten dang nhap </label>
+    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+    <label for="inputPassword">mat khau </label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+ <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
+                <label class="form-check-label" for="rememberPasswordCheck">
+                  Remember password
+                </label>
+              </div>
+    </div>
+    <div class="text-center mt-3">
+        <button class="btn btn-lg btn-primary  text-uppercase fw-bold" type="submit">
+            dang nhap
+        </button>
+        <br>
+
+<div class ="text-center mt-3">       
+        <a class="h4 text-danger text-uppercase fw-bold mt-3" href="{{ path('app_register') }}">dang ki</a>
+
+</div>
+             </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+{% endblock %}
+
+
+{% block footer %}
+ {% endblock %}
