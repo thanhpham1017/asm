@@ -5,31 +5,31 @@
    <div class="row">
       <div class="col-4">
          <div class="card">
-            <img src="{{ author.image }}" width="300" height="300">
+            <img src="{{ author.image }}" width="250" height="250">
          </div>
       </div>
       <div class="col-6">
          <table class="table table-bordered">
             <tr>
                <th colspan="2" class="bg-light">
-                  <h2 class="text-danger"> Author Information </h2>
+                  <h2 class="font family"> Author Information </h2>
                </th>
             </tr>
             <tr class="h4">
-               <th>Name</th>
-               <td>{{ author.name }}</td>
+               <th style="background-color: lightblue">Name</th>
+               <td style="background-color: lightblue">{{ author.name }}</td>
             </tr>
             <tr class="h4">
-               <th>Age </th>
-               <td>{{ author.age }} </td>
+               <th style="background-color: lightblue">Age </th>
+               <td style="background-color: lightblue">{{ author.age }} </td>
             </tr>
             <tr class="h4">
-               <th>Address</th>
-               <td>{{ author.address }}</td>
+               <th style="background-color: lightblue">Address</th>
+               <td style="background-color: lightblue">{{ author.address }}</td>
             </tr>
             <tr class="h4">
-               <th class="col-md-4">Published Books</th>
-               <td class="col-md-8">
+               <th class="col-md-4" style="background-color: lightblue">Published Books</th>
+               <td class="col-md-8"style="background-color: lightblue">
                {% if author.books != null %}
                   {% for book in author.books %}
                      <a href="{{ path('book_detail', {'id' : book.id })}}">

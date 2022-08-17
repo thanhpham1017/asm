@@ -6,7 +6,7 @@
    <div class="row">
       <div class="col-4">
          <div class="card">
-            <img src="{{ asset('images/books/'~book.image)}}" width="260" height="240">
+            <img src="{{ asset('images/books/'~book.image)}}" width="250" height="250">
          </div>
       </div>
       <div class="col-6" >
@@ -17,25 +17,25 @@
                </th>
             </tr>
             <tr class="h4 font family">
-               <th>Published Date</th>
-               <td>{{ book.date | date('d/m/Y')}}</td>
+               <th style="background-color: lightgreen">Published Date</th>
+               <td style="background-color: lightblue">{{ book.date | date('d/m/Y')}}</td>
             </tr>
             <tr class="h4">
-               <th>Book Price</th>
-               <td>${{ book.price }} </td>
+               <th style="background-color: lightgreen">Book Price</th>
+               <td style="background-color: lightblue">${{ book.price }} </td>
             </tr>
-            <tr class="h4">
+            <tr class="h4" style="background-color: lightblue">
             {% if book.quantity >= 1 %}
-               <th>Book Quantity</th>
-               <td>{{ book.quantity }}</td>
+               <th style="background-color: lightgreen">Book Quantity</th>
+               <td >{{ book.quantity }}</td>
             {% else %}
                <th>Book Quantity</th>
                <td>Out of stock</td>
             {% endif %}           
             </tr>
             <tr class="h4">
-               <th>Genre</th>
-               <td>
+               <th style="background-color: lightgreen" >Genre</th>
+               <td style="background-color: lightblue">
                {% if book.genre != null %}
                   <a class="text-decoration-none" href="{{ path('genre_detail', {'id' : book.genre.id })}}">
                      {{ book.genre.name }}
@@ -46,8 +46,8 @@
              </td>
             </tr>
             <tr class="h4">
-               <th>Author(s)</th>
-               <td>
+               <th style="background-color: lightgreen">Author(s)</th>
+               <td style="background-color: lightblue">
                {% if book.authors == null %}
                   <i>Undefined</i>
                {% else %}

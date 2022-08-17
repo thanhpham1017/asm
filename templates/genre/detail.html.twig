@@ -5,23 +5,28 @@
    <div class="row">
       <div class="col-4">
          <div>
-            <img src="{{ genre.image }}" width="300" height="300">
+            <img src="{{ genre.image }}" width="250" height="250">
          </div>
       </div>
+      
+
       <div class="col-6">
          <table class="table table-bordered">
             <tr>
                <th colspan="2" class="bg-light">
-                  <h2 class="text-danger">{{ genre.name }} </h2>
+                  <h2 class="font family">{{ genre.name }} </h2>
                </th>
             </tr>
+
+            
+
             <tr class="h4">
-               <th class="col-md-3">Total books</th>
-               <td class="col-md-7">{{ genre.books | length }}</td>
+               <th class="col-md-3"style="background-color: lightblue">Total books</th>
+               <td class="col-md-7"style="background-color: lightblue">{{ genre.books | length }}</td>
             </tr>
             <tr class="h4">
-               <th class="col-md-3">Book List</th>
-               <td class="col-md-7">
+               <th class="col-md-3"style="background-color: lightblue">Book List</th>
+               <td class="col-md-7"style="background-color: lightblue">
                   {% if genre.books != null %}
                      {% for book in genre.books %}
                         <a href="{{ path('book_detail', {'id' : book.id })}}">
@@ -32,7 +37,9 @@
                {% endif %}
                </td>
             </tr>
+         
          </table> 
+      
       </div>
    </div>
 </div>

@@ -8,6 +8,7 @@
 {% block header %} {% endblock %}
 
 {% block body %}
+<div style="background-color: pink"> 
 <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -48,13 +49,13 @@
               </div>
     </div>
     <div class="text-center mt-3">
-        <button class="btn btn-lg btn-primary  text-uppercase fw-bold" type="submit">
+        <button class="btn btn-lg btn-primary  text-uppercase fw-bold" type="submit" >
             dang nhap
         </button>
         <br>
 
 <div class ="text-center mt-3">       
-        <a class="h4 text-danger text-uppercase fw-bold mt-3" href="{{ path('app_register') }}">dang ki</a>
+        <a class="h4 font family text-uppercase fw-bold mt-3" href="{{ path('app_register') }}">dang ki</a>
 
 </div>
              </div>
@@ -64,6 +65,7 @@
     </div>
   </div>
 </form>
+</div>
 </div>
 {% endblock %}
 
