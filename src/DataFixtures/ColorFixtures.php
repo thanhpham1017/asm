@@ -18,7 +18,7 @@ class ColorFixtures extends Fixture
                     "https://www.upholsteryshop.co.uk/wp-content/uploads/2016/02/OceanBlue.jpg",
                     "https://www.porcelaingres.com/media/a3/46/db/1651069136/pg-just_grey-light_grey-_-nat-6060-f1-x600113x8.jpg"];
         $length = count($titles);
-        for ($i=1; $i<=$length; $i++) {
+        for ($i=0; $i<$length; $i++) {
             $color = new Color;
             $color->setName($titles [$i])
                   ->setImage($images [$i]);
