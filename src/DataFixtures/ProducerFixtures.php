@@ -10,11 +10,19 @@ class ProducerFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        for ($i=1; $i<15; $i++) {
+        $titles = ["FPT", "CellphoneS", "MediaMart", "Shop Dunk", "EDIGI", "Mobile World"];
+        $images = ["http://cdn2.tieudungplus.vn/upload/qeXw6Srue12aQG46um9kw/files/fpt-shop.png",
+                    "https://thumb.danhsachcuahang.com/image/2020/03/20200313_4de5f96d974976b57261100ec8b72b05_1584067999.png",
+                    "https://cafef1.mediacdn.vn/LOGO/MEDIAMART.jpg",
+                    "https://static.topcv.vn/company_logos/yuYZUFNdRmUmy1sNjKzQYwg4IfIVA9S4_1649822542____1875c9736337d919776d693eb13a70a3.png",
+                    "https://ippgroup.vn/joboffers/eDiGi.png",
+                    "https://cdn.haitrieu.com/wp-content/uploads/2021/11/Logo-The-Gioi-Di-Dong-MWG.png"];
+        $length = count($titles);
+        for ($i=0; $i<$length; $i++) {
             $producer = new Producer;
-            $producer->setName("Producer $i")
+            $producer->setName($titles [$i])
                    ->setAddress("Viet Nam")
-                   ->setImage("https://image.shutterstock.com/image-photo/confident-intelligence-grey-hair-senior-260nw-261010109.jpg")
+                   ->setImage($images [$i])
                    ->setAge(rand(20,60));
             $manager->persist($producer);
         }
