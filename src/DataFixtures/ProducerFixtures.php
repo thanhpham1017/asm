@@ -23,7 +23,7 @@ class ProducerFixtures extends Fixture
             $producer->setName($titles [$i])
                    ->setAddress("Viet Nam")
                    ->setImage($images [$i])
-                   ->setAge(rand(20,60));
+                   ->setAge(rand(1,10));
             $manager->persist($producer);
         }
 
