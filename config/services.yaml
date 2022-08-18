@@ -6,8 +6,8 @@
 parameters:
     timezone: '%env(APP_TIMEZONE)%'
 
-     # set thư mục chứa ảnh upload cho book
-    book_image: '%kernel.project_dir%/public/images/books'
+     # set thư mục chứa ảnh upload cho phone
+    phone_image: '%kernel.project_dir%/public/images/phones'
     
 services:
     # default configuration for services in *this* file

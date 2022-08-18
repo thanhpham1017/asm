@@ -2,32 +2,32 @@
 
 namespace App\Repository;
 
-use App\Entity\Genre;
+use App\Entity\Producer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Genre>
+ * @extends ServiceEntityRepository<Producer>
  *
- * @method Genre|null find($id, $lockMode = null, $lockVersion = null)
- * @method Genre|null findOneBy(array $criteria, array $orderBy = null)
- * @method Genre[]    findAll()
- * @method Genre[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Producer|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Producer|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Producer[]    findAll()
+ * @method Producer[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class GenreRepository extends ServiceEntityRepository
+class ProducerRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Genre::class);
+        parent::__construct($registry, Producer::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Genre $entity, bool $flush = true): void
+    public function add(Producer $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -39,7 +39,7 @@ class GenreRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Genre $entity, bool $flush = true): void
+    public function remove(Producer $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -48,15 +48,15 @@ class GenreRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Genre[] Returns an array of Genre objects
+    //  * @return Producer[] Returns an array of Producer objects
     //  */
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('g')
-            ->andWhere('g.exampleField = :val')
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('g.id', 'ASC')
+            ->orderBy('a.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -65,10 +65,10 @@ class GenreRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Genre
+    public function findOneBySomeField($value): ?Producer
     {
-        return $this->createQueryBuilder('g')
-            ->andWhere('g.exampleField = :val')
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()

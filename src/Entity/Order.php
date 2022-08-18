@@ -17,8 +17,8 @@ class Order
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'orders')]
     private $user;
 
-    #[ORM\ManyToOne(targetEntity: Book::class, inversedBy: 'orders')]
-    private $book;
+    #[ORM\ManyToOne(targetEntity: Phone::class, inversedBy: 'orders')]
+    private $phone;
 
     #[ORM\Column(type: 'integer')]
     private $quantity;
@@ -46,14 +46,14 @@ class Order
         return $this;
     }
 
-    public function getBook(): ?Book
+    public function getPhone(): ?Phone
     {
-        return $this->book;
+        return $this->phone;
     }
 
-    public function setBook(?Book $book): self
+    public function setPhone(?Phone $phone): self
     {
-        $this->book = $book;
+        $this->phone = $phone;
 
         return $this;
     }

@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Book;
+use App\Entity\Phone;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,10 +16,10 @@ class CartController extends AbstractController
     public function addToCart(Request $request) 
     {
         $session = $request->getSession();
-        $id = $request->get('bookid');
-        $session->set('bookid',$id);
-        $book = $this->getDoctrine()->getRepository(Book::class)->find($id);
-        $session->set('book', $book);
+        $id = $request->get('phoneid');
+        $session->set('phoneid',$id);
+        $phone = $this->getDoctrine()->getRepository(Phone::class)->find($id);
+        $session->set('phone', $phone);
         $quantity = $request->get('quantity');
         $session->set('quantity', $quantity);
         $date = date('Y/m/d');  //get current date
@@ -27,8 +27,8 @@ class CartController extends AbstractController
         $datetime = date('Y/m/d H:i:s'); //get current date + time
         $session->set('date', $date);
         $session->set('datetime', $datetime);
-        $book_price = $book->getPrice();
-        $order_price = $book_price * $quantity;
+        $phone_price = $phone->getPrice();
+        $order_price = $phone_price * $quantity;
         $session->set('price', $order_price);
         $user = $this->getUser(); //get current user
         $session->set('user', $user);
@@ -41,12 +41,12 @@ class CartController extends AbstractController
         //khởi tạo session
         $session = new Session();
 
-        //giảm quantity của book sau khi order
-        $book = $this->getDoctrine()->getRepository(Book::class)->find($session->get('bookid'));
-        $book_quantity = $book->getQuantity();
+        //giảm quantity của phone sau khi order
+        $phone = $this->getDoctrine()->getRepository(Phone::class)->find($session->get('phoneid'));
+        $phone_quantity = $phone->getQuantity();
         $order_quantity = $session->get('quantity');
-        $new_quantity = $book_quantity - $order_quantity;
-        $book->setQuantity($new_quantity);
+        $new_quantity = $phone_quantity - $order_quantity;
+        $phone->setQuantity($new_quantity);
 
         //tạo object Order để lưu thông tin đơn hàng
 
@@ -55,14 +55,14 @@ class CartController extends AbstractController
 
         //dùng Manager để lưu object vào DB
         $manager = $managerRegistry->getManager();
-        $manager->persist($book);
+        $manager->persist($phone);
         $manager->flush();
 
         //gửi thông báo về view bằng addFlash
-        $this->addFlash('Info', 'Order book successfully !');
+        $this->addFlash('Info', 'Order phone successfully !');
   
-        //redirect về trang book store
-        return $this->redirectToRoute('book_list',
+        //redirect về trang phone store
+        return $this->redirectToRoute('phone_list',
     );
     }
 }

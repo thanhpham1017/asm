@@ -5,35 +5,35 @@
    <div class="row">
       <div class="col-4">
          <div class="card">
-            <img src="{{ author.image }}" width="250" height="250">
+            <img src="{{ producer.image }}" width="250" height="250">
          </div>
       </div>
       <div class="col-6">
          <table class="table table-bordered">
             <tr>
                <th colspan="2" class="bg-light">
-                  <h2 class="font family"> Author Information </h2>
+                  <h2 class="font family"> Producer Information </h2>
                </th>
             </tr>
             <tr class="h4">
                <th style="background-color: lightblue">Name</th>
-               <td style="background-color: lightblue">{{ author.name }}</td>
+               <td style="background-color: lightblue">{{ producer.name }}</td>
             </tr>
             <tr class="h4">
                <th style="background-color: lightblue">Age </th>
-               <td style="background-color: lightblue">{{ author.age }} </td>
+               <td style="background-color: lightblue">{{ producer.age }} </td>
             </tr>
             <tr class="h4">
                <th style="background-color: lightblue">Address</th>
-               <td style="background-color: lightblue">{{ author.address }}</td>
+               <td style="background-color: lightblue">{{ producer.address }}</td>
             </tr>
             <tr class="h4">
-               <th class="col-md-4" style="background-color: lightblue">Published Books</th>
+               <th class="col-md-4" style="background-color: lightblue">Published Phones</th>
                <td class="col-md-8"style="background-color: lightblue">
-               {% if author.books != null %}
-                  {% for book in author.books %}
-                     <a href="{{ path('book_detail', {'id' : book.id })}}">
-                        {{ book.title }} 
+               {% if producer.phones != null %}
+                  {% for phone in producer.phones %}
+                     <a href="{{ path('phone_detail', {'id' : phone.id })}}">
+                        {{ phone.title }} 
                      </a>
                      <br>
                   {% endfor %}

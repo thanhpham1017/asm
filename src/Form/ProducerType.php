@@ -2,21 +2,21 @@
 
 namespace App\Form;
 
-use App\Entity\Author;
+use App\Entity\Producer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AuthorType extends AbstractType
+class ProducerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', TextType::class,
             [
-                'label' => 'Author name',
+                'label' => 'Producer name',
                 'attr' => [
                     'minlength' => 3,
                     'maxlength' => 30
@@ -24,7 +24,7 @@ class AuthorType extends AbstractType
             ])
             ->add('age', IntegerType::class,
             [
-                'label' => 'Author age',
+                'label' => 'Producer age',
                 'attr' => [
                     'min' => 15,
                     'max' => 80
@@ -32,7 +32,7 @@ class AuthorType extends AbstractType
             ])
             ->add('address',TextType::class,
             [
-                'label' => 'Author address',
+                'label' => 'Producer address',
                 'attr' => [
                     'minlength' => 3,
                     'maxlength' => 50
@@ -40,21 +40,21 @@ class AuthorType extends AbstractType
             ])
             ->add('image' ,TextType::class,
             [
-                'label' => 'Author image',
+                'label' => 'Producer image',
                 'attr' => [
                     'maxlength' => 255
                 ]
             ])
-            //Nếu đã add Author trong Book
+            //Nếu đã add Producer trong Phone
             //thì không cần add theo chiều ngược lại
-            //->add('books')
+            //->add('phones')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Author::class,
+            'data_class' => Producer::class,
         ]);
     }
 }

@@ -2,14 +2,14 @@
 
 namespace App\Form;
 
-use App\Entity\Genre;
+use App\Entity\Color;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class GenreType extends AbstractType
+class ColorType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -17,7 +17,7 @@ class GenreType extends AbstractType
             ->add('name', TextType::class,
             [
                 //'required' => true, //optional (Not Null)
-                'label' => 'Genre name',
+                'label' => 'Color name',
                 'attr' => [
                     'minlength' => 3,
                     'maxlength' => 30
@@ -25,7 +25,7 @@ class GenreType extends AbstractType
             ])
             ->add('image', TextType::class,
             [
-                'label' => 'Genre image',
+                'label' => 'Color image',
                 'attr' => [
                     'maxlength' => 255
                 ]
@@ -37,7 +37,7 @@ class GenreType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Genre::class,
+            'data_class' => Color::class,
         ]);
     }
 }

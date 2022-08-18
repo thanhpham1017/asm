@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\BookRepository;
+use App\Repository\PhoneRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: BookRepository::class)]
-class Book
+#[ORM\Entity(repositoryClass: PhoneRepository::class)]
+class Phone
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -30,18 +30,18 @@ class Book
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
 
-    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books')]
-    private $authors;
+    #[ORM\ManyToMany(targetEntity: Producer::class, inversedBy: 'phones')]
+    private $producers;
 
-    #[ORM\ManyToOne(targetEntity: Genre::class, inversedBy: 'books')]
-    private $genre;
+    #[ORM\ManyToOne(targetEntity: Color::class, inversedBy: 'phones')]
+    private $color;
 
-    #[ORM\OneToMany(mappedBy: 'book', targetEntity: Order::class)]
+    #[ORM\OneToMany(mappedBy: 'phone', targetEntity: Order::class)]
     private $orders;
 
     public function __construct()
     {
-        $this->authors = new ArrayCollection();
+        $this->producers = new ArrayCollection();
         $this->orders = new ArrayCollection();
     }
 
@@ -99,53 +99,50 @@ class Book
     }
 
       //Note: bỏ string ở hàm get & set Image
-      public function getImage()
+      public function getImage(): ?string
       {
           return $this->image;
       }
   
-      public function setImage($image): self
-      {
-          //nếu người dùng upload ảnh mới thì set giá trị
-          //ngược lại thì giữ nguyên ảnh cũ
-          if ($image != null) {
-              $this->image = $image;
-          }
-          return $this;
-      }
-
-    /**
-     * @return Collection<int, Author>
-     */
-    public function getAuthors(): Collection
+      public function setImage(string $image): self
     {
-        return $this->authors;
+        $this->image = $image;
+
+        return $this;
     }
 
-    public function addAuthor(Author $author): self
+    /**
+     * @return Collection<int, Producer>
+     */
+    public function getProducers(): Collection
     {
-        if (!$this->authors->contains($author)) {
-            $this->authors[] = $author;
+        return $this->producers;
+    }
+
+    public function addProducer(Producer $producer): self
+    {
+        if (!$this->producers->contains($producer)) {
+            $this->producers[] = $producer;
         }
 
         return $this;
     }
 
-    public function removeAuthor(Author $author): self
+    public function removeProducer(Producer $producer): self
     {
-        $this->authors->removeElement($author);
+        $this->producers->removeElement($producer);
 
         return $this;
     }
 
-    public function getGenre(): ?Genre
+    public function getColor(): ?Color
     {
-        return $this->genre;
+        return $this->color;
     }
 
-    public function setGenre(?Genre $genre): self
+    public function setColor(?Color $color): self
     {
-        $this->genre = $genre;
+        $this->color = $color;
 
         return $this;
     }
@@ -162,7 +159,7 @@ class Book
     {
         if (!$this->orders->contains($order)) {
             $this->orders[] = $order;
-            $order->setBook($this);
+            $order->setPhone($this);
         }
 
         return $this;
@@ -172,8 +169,8 @@ class Book
     {
         if ($this->orders->removeElement($order)) {
             // set the owning side to null (unless already changed)
-            if ($order->getBook() === $this) {
-                $order->setBook(null);
+            if ($order->getPhone() === $this) {
+                $order->setPhone(null);
             }
         }
 

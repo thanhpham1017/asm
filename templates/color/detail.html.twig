@@ -5,7 +5,7 @@
    <div class="row">
       <div class="col-4">
          <div>
-            <img src="{{ genre.image }}" width="250" height="250">
+            <img src="{{ color.image }}" width="250" height="250">
          </div>
       </div>
       
@@ -14,23 +14,23 @@
          <table class="table table-bordered">
             <tr>
                <th colspan="2" class="bg-light">
-                  <h2 class="font family">{{ genre.name }} </h2>
+                  <h2 class="font family">{{ color.name }} </h2>
                </th>
             </tr>
 
             
 
             <tr class="h4">
-               <th class="col-md-3"style="background-color: lightblue">Total books</th>
-               <td class="col-md-7"style="background-color: lightblue">{{ genre.books | length }}</td>
+               <th class="col-md-3"style="background-color: lightblue">Total phones</th>
+               <td class="col-md-7"style="background-color: lightblue">{{ color.phones | length }}</td>
             </tr>
             <tr class="h4">
-               <th class="col-md-3"style="background-color: lightblue">Book List</th>
+               <th class="col-md-3"style="background-color: lightblue">Phone List</th>
                <td class="col-md-7"style="background-color: lightblue">
-                  {% if genre.books != null %}
-                     {% for book in genre.books %}
-                        <a href="{{ path('book_detail', {'id' : book.id })}}">
-                           {{ book.title }} 
+                  {% if color.phones != null %}
+                     {% for phone in color.phones %}
+                        <a href="{{ path('phone_detail', {'id' : phone.id })}}">
+                           {{ phone.title }} 
                         </a>
                         <br>
                      {% endfor %}

@@ -1,22 +1,22 @@
 {# format giao diện form tự động bằng bootstrap #}
-{% form_theme genreForm 'bootstrap_5_layout.html.twig' %}
+{% form_theme colorForm 'bootstrap_5_layout.html.twig' %}
 {% extends "base.html.twig" %}
 
 {% block body %}
 <div style="background-color: lightbule"> 
 <div class="container col-md-4 text-center mt-3">
    <div class="card p-3 bg-light">
-      <h3 class="alert alert-primary">Edit genre</h3>
+      <h3 class="alert alert-primary">Edit color</h3>
       {# TH1: Nếu đã add nút Submit ở trong form #}
-      {# {{ form (genreForm )}} #}
+      {# {{ form (colorForm )}} #}
 
       {# TH2: Nếu chưa add nút Submit ở trong form #}
-      {{ form_start(genreForm) }}
+      {{ form_start(colorForm) }}
          
-      {{ form_widget(genreForm)}}
+      {{ form_widget(colorForm)}}
       <input class="btn btn-outline-danger" type="submit" value="Edit">
 
-      {{ form_end(genreForm) }}
+      {{ form_end(colorForm) }}
    </div>
 </div>
 </div>

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\AuthorRepository;
+use App\Repository\ProducerRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: AuthorRepository::class)]
-class Author
+#[ORM\Entity(repositoryClass: ProducerRepository::class)]
+class Producer
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -27,12 +27,12 @@ class Author
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
 
-    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'authors')]
-    private $books;
+    #[ORM\ManyToMany(targetEntity: Phone::class, mappedBy: 'producers')]
+    private $phones;
 
     public function __construct()
     {
-        $this->books = new ArrayCollection();
+        $this->phones = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -89,27 +89,27 @@ class Author
     }
 
     /**
-     * @return Collection<int, Book>
+     * @return Collection<int, Phone>
      */
-    public function getBooks(): Collection
+    public function getPhones(): Collection
     {
-        return $this->books;
+        return $this->phones;
     }
 
-    public function addBook(Book $book): self
+    public function addPhone(Phone $phone): self
     {
-        if (!$this->books->contains($book)) {
-            $this->books[] = $book;
-            $book->addAuthor($this);
+        if (!$this->phones->contains($phone)) {
+            $this->phones[] = $phone;
+            $phone->addProducer($this);
         }
 
         return $this;
     }
 
-    public function removeBook(Book $book): self
+    public function removePhone(Phone $phone): self
     {
-        if ($this->books->removeElement($book)) {
-            $book->removeAuthor($this);
+        if ($this->phones->removeElement($phone)) {
+            $phone->removeProducer($this);
         }
 
         return $this;

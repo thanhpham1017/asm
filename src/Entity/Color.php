@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\GenreRepository;
+use App\Repository\ColorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: GenreRepository::class)]
-class Genre
+#[ORM\Entity(repositoryClass: ColorRepository::class)]
+class Color
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,12 +21,12 @@ class Genre
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
 
-    #[ORM\OneToMany(mappedBy: 'genre', targetEntity: Book::class)]
-    private $books;
+    #[ORM\OneToMany(mappedBy: 'color', targetEntity: Phone::class)]
+    private $phones;
 
     public function __construct()
     {
-        $this->books = new ArrayCollection();
+        $this->phones = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -59,29 +59,29 @@ class Genre
     }
 
     /**
-     * @return Collection<int, Book>
+     * @return Collection<int, Phone>
      */
-    public function getBooks(): Collection
+    public function getPhones(): Collection
     {
-        return $this->books;
+        return $this->phones;
     }
 
-    public function addBook(Book $book): self
+    public function addPhone(Phone $phone): self
     {
-        if (!$this->books->contains($book)) {
-            $this->books[] = $book;
-            $book->setGenre($this);
+        if (!$this->phones->contains($phone)) {
+            $this->phones[] = $phone;
+            $phone->setColor($this);
         }
 
         return $this;
     }
 
-    public function removeBook(Book $book): self
+    public function removePhone(Phone $phone): self
     {
-        if ($this->books->removeElement($book)) {
+        if ($this->phones->removeElement($phone)) {
             // set the owning side to null (unless already changed)
-            if ($book->getGenre() === $this) {
-                $book->setGenre(null);
+            if ($phone->getColor() === $this) {
+                $phone->setColor(null);
             }
         }
 
