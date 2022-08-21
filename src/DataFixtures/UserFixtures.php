@@ -9,7 +9,6 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserFixtures extends Fixture
 {
-    //khởi tạo constructor để import thư viện UserPasswordHasherInterface (dùng để mã hóa mật khẩu)
     public function __construct(UserPasswordHasherInterface $hasherInterface)
     {
         $this->hasher = $hasherInterface;
@@ -21,14 +20,14 @@ class UserFixtures extends Fixture
         $user = new User;
         $user->setUsername("admin");  //unique
         $user->setRoles(["ROLE_ADMIN"]); //security.yaml
-        $user->setPassword($this->hasher->hashPassword($user,"123456"));  //__construct
+        $user->setPassword($this->hasher->hashPassword($user,"shop123"));  //__construct
         $manager->persist($user);
 
         //tạo tài khoản với ROLE_CUSTOMER
         $user = new User;
-        $user->setUsername("customer");
+        $user->setUsername("client");
         $user->setRoles(["ROLE_CUSTOMER"]);
-        $user->setPassword($this->hasher->hashPassword($user,"123456"));
+        $user->setPassword($this->hasher->hashPassword($user,"thanh"));
         $manager->persist($user);
 
         $manager->flush();

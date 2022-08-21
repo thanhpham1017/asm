@@ -5,7 +5,6 @@ namespace App\DataFixtures;
 use App\Entity\Phone;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use app\Entity\Color;
 
 class PhoneFixtures extends Fixture
 {
@@ -23,9 +22,9 @@ class PhoneFixtures extends Fixture
             $phone = new Phone;
             $phone->setTitle($titles[$i])
                  ->setQuantity(rand(10,100)) 
-                 ->setPrice((float)(rand(100,1000)))
+                 ->setPrice((float)(rand(100,1000))) 
                  ->setImage($images[$i])
-                 ->setDate(\DateTime::createFromFormat('Y/m/d','2022/07/30'));
+                 ->setDate(\DateTime::createFromFormat('Y/m/d','2022/05/25'));
             $manager->persist($phone);     
         }
 

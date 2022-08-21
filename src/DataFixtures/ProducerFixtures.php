@@ -10,13 +10,13 @@ class ProducerFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $titles = ["FPT", "CellphoneS", "MediaMart", "Shop Dunk", "EDIGI", "Mobile World"];
-        $images = ["http://cdn2.tieudungplus.vn/upload/qeXw6Srue12aQG46um9kw/files/fpt-shop.png",
-                    "https://thumb.danhsachcuahang.com/image/2020/03/20200313_4de5f96d974976b57261100ec8b72b05_1584067999.png",
-                    "https://cafef1.mediacdn.vn/LOGO/MEDIAMART.jpg",
-                    "https://static.topcv.vn/company_logos/yuYZUFNdRmUmy1sNjKzQYwg4IfIVA9S4_1649822542____1875c9736337d919776d693eb13a70a3.png",
-                    "https://ippgroup.vn/joboffers/eDiGi.png",
-                    "https://cdn.haitrieu.com/wp-content/uploads/2021/11/Logo-The-Gioi-Di-Dong-MWG.png"];
+        $titles = ["Apple", "realme", "Samsung", "Xiaomi", "Vivo", "Oppo"];
+        $images = ["https://i.pinimg.com/originals/03/32/88/033288573e174c88f2f3b3c789b75212.jpg",
+                    "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/032019/untitled-1_34.png?FxpwbzeZy8_zj4.SAzBmPJ8.ADlXNaYi&itok=G904y1dh",
+                    "https://d3m9l0v76dty0.cloudfront.net/system/photos/705341/original/4cd06e3a46a1feadfc4f54b8c64bba66.jpg",
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/1024px-Xiaomi_logo_%282021-%29.svg.png",
+                    "https://seeklogo.com/images/V/vivo-mobile-phones-logo-6C28635F1B-seeklogo.com.png",
+                    "https://i0.wp.com/www.itvoice.in/wp-content/uploads/2022/04/Oppo.jpg?fit=1024%2C1024&ssl=1"];
         $length = count($titles);
         for ($i=0; $i<$length; $i++) {
             $producer = new Producer;

@@ -20,6 +20,8 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
+    
+
     public const LOGIN_ROUTE = 'app_login';
 
     private UrlGeneratorInterface $urlGenerator;
@@ -50,15 +52,10 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        //NOTE: Hệ thống có 2 role: ADMIN & CUSTOMER
-        //gọi đến user hiện tại (logged-in user)
         $user = $token->getUser();
-        //check role của user để redirect về web page chỉ định
-        //nếu là ROLE_ADMIN thì chuyển về trang homepage (route name = "home")
         if (in_array('ROLE_ADMIN', $user->getRoles(), true)) {
             return new RedirectResponse($this->urlGenerator->generate('home'));
         } else {
-        //ngược lại nếu là ROLE_CUSTOMER thì chuyển về trang store (route name = "phone_list")
         return new RedirectResponse($this->urlGenerator->generate('phone_list'));
         }
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);

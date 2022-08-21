@@ -38,30 +38,21 @@ class CartController extends AbstractController
     #[Route('/order', name: 'make_order')]
     public function makeOrder(Request $request, ManagerRegistry $managerRegistry) 
     {
-        //khởi tạo session
         $session = new Session();
 
-        //giảm quantity của phone sau khi order
         $phone = $this->getDoctrine()->getRepository(Phone::class)->find($session->get('phoneid'));
         $phone_quantity = $phone->getQuantity();
         $order_quantity = $session->get('quantity');
         $new_quantity = $phone_quantity - $order_quantity;
         $phone->setQuantity($new_quantity);
 
-        //tạo object Order để lưu thông tin đơn hàng
-
-        //set từng thuộc tính cho bảng Order 
-        //VD: $order->setPrice()
-
-        //dùng Manager để lưu object vào DB
         $manager = $managerRegistry->getManager();
         $manager->persist($phone);
         $manager->flush();
 
-        //gửi thông báo về view bằng addFlash
+
         $this->addFlash('Info', 'Order phone successfully !');
   
-        //redirect về trang phone store
         return $this->redirectToRoute('phone_list',
     );
     }

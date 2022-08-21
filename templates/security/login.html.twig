@@ -32,9 +32,9 @@
 
     <div class="card p-2 bg-white">
 
-    <label for="inputUsername">ten dang nhap </label>
+    <label for="inputUsername">Login</label>
     <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
-    <label for="inputPassword">mat khau </label>
+    <label for="inputPassword">Password</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
     <input type="hidden" name="_csrf_token"
@@ -50,14 +50,9 @@
     </div>
     <div class="text-center mt-3">
         <button class="btn btn-lg btn-primary  text-uppercase fw-bold" type="submit" >
-            dang nhap
+            Login
         </button>
         <br>
-
-<div class ="text-center mt-3">       
-        <a class="h4 font family text-uppercase fw-bold mt-3" href="{{ path('app_register') }}">dang ki</a>
-
-</div>
              </div>
          </div>
         </div>

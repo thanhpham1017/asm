@@ -1,19 +1,17 @@
-
-{% form_theme colorForm 'bootstrap_5_layout.html.twig' %}
+{% form_theme storeForm 'bootstrap_5_layout.html.twig' %}
 {% extends "base.html.twig" %}
 
 {% block body %}
 <div style="background-color: lightbule"> 
 <div class="container col-md-4 text-center mt-3">
    <div class="card p-3 bg-light">
-      <h3 class="alert alert-primary">Edit color</h3>
-
-      {{ form_start(colorForm) }}
+      <h3 class="alert alert-primary">Edit store</h3>
+      {{ form_start(storeForm) }}
          
-      {{ form_widget(colorForm)}}
+      {{ form_widget(storeForm)}}
       <input class="btn btn-outline-danger" type="submit" value="Edit">
 
-      {{ form_end(colorForm) }}
+      {{ form_end(storeForm) }}
    </div>
 </div>
 </div>

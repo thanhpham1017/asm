@@ -2,8 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\Phone;
 use App\Entity\Color;
+use App\Entity\Phone;
+use App\Entity\Store;
 use App\Entity\Producer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -54,18 +55,14 @@ class PhoneType extends AbstractType
                     'maxlength' => 255
                 ]
             ])
-            /* 
-            Thông tin chứa dữ liệu của bảng khác trong DB
-            => Load dữ liệu của bảng Producer và Color trong 
-            form add/edit Phone để người dùng lựa chọn
-            */
+            
             ->add('producers', EntityType::class,
             [
                 'label' => 'Producer',
                 'required' => true,
                 'class' => Producer::class,
                 'choice_label' => 'name',
-                'multiple' => true,  //nếu có thể chọn nhiều option (relationship: many)
+                'multiple' => true, 
                 'expanded' => false
             ]) 
             ->add('color', EntityType::class,
@@ -74,10 +71,18 @@ class PhoneType extends AbstractType
                 'required' => true,
                 'class' => Color::class,
                 'choice_label' => 'name',
-                'multiple' => false, //nếu chỉ được chọn 1 option (relationship: 1)
+                'multiple' => false, 
                 'expanded' => false
             ])
-
+            ->add('store', EntityType::class,
+            [
+                'label' => 'Store',
+                'required' => true,
+                'class' => Store::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => false
+            ])
             /* Note:
                 multiple: false & expanded: false => drop-down list
                 multiple: false & expanded: true => radio button

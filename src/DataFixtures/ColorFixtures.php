@@ -24,6 +24,7 @@ class ColorFixtures extends Fixture
                   ->setImage($images [$i]);
             $manager->persist($color);
         }
+
         $manager->flush();
     }
 }

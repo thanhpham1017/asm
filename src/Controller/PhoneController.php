@@ -135,9 +135,6 @@ class PhoneController extends AbstractController
   #[Route('/search', name: 'search_phone')]
   public function searchPhone(PhoneRepository $phoneRepository, Request $request) {
     $phones = $phoneRepository->searchPhone($request->get('keyword'));
-    // if ($phones == null) {
-    //   $this->addFlash("Warning", "No phone found !");
-    // }
     $session = $request->getSession();
     $session->set('search', true);
     return $this->render('phone/list.html.twig', 

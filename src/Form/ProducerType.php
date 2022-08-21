@@ -45,9 +45,6 @@ class ProducerType extends AbstractType
                     'maxlength' => 255
                 ]
             ])
-            //Nếu đã add Producer trong Phone
-            //thì không cần add theo chiều ngược lại
-            //->add('phones')
         ;
     }
 

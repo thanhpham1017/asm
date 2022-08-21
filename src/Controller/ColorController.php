@@ -54,7 +54,6 @@ class ColorController extends AbstractController
       if ($color == null) {
           $this->addFlash('Warning', 'Color not existed !');
       } 
-      //check xem còn phone trong color hay không trước khi xóa
       else if (count($color->getPhones()) > 0) {
         $this->addFlash('Warning', 'Can not delete this color !');
       } 

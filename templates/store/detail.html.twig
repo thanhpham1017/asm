@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container col-md-8 text-center mt-3">
+   <div class="row">
+      <div class="col-4">
+         <div>
+            <img src="{{ store.image }}" width="250" height="250">
+         </div>
+      </div>
+      
+
+      <div class="col-6">
+         <table class="table table-bordered">
+            <tr>
+               <th colspan="2" class="bg-light">
+                  <h2 class="font family">{{ store.name }} </h2>
+               </th>
+            </tr>
+
+            
+
+            <tr class="h4">
+               <th class="col-md-3"style="background-store: lightblue">Total phones</th>
+               <td class="col-md-7"style="background-store: lightblue">{{ store.phones | length }}</td>
+            </tr>
+            <tr class="h4">
+               <th class="col-md-3"style="background-store: lightblue">Phone List</th>
+               <td class="col-md-7"style="background-store: lightblue">
+                  {% if store.phones != null %}
+                     {% for phone in store.phones %}
+                        <a href="{{ path('phone_detail', {'id' : phone.id })}}">
+                           {{ phone.title }} 
+                        </a>
+                        <br>
+                     {% endfor %}
+               {% endif %}
+               </td>
+            </tr>
+         
+         </table> 
+      
+      </div>
+   </div>
+</div>
+{% endblock %}

@@ -3,11 +3,6 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta charset="UTF-8">
-		<title>
-			{% block title %}
-				APPLE STORE
-			{% endblock %}
-		</title>
 		{# Run `composer require symfony/webpack-encore-bundle`
 				           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
@@ -25,13 +20,12 @@
 	<body>
 		{% block header %}
 		<div style="background-color: pink"> 
-			<div
-				class="container col-10 mt-3">
+			<div class="container">
 				{# bs5-nav-ul #}
 				{% if is_granted('ROLE_ADMIN') %}
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#">apple</a>
+		<a class="navbar-brand"><img src="{{ asset('images/home/logoshop.jpg') }}" width="100" height="100"></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 		</button>
@@ -48,6 +42,9 @@
 						</li>
 						<li class="nav-item ">
 							<a class="nav-link font family" href="{{ path('color_index')}}">Color</a>
+						</li>
+						<li class="nav-item ">
+							<a class="nav-link font family" href="{{ path('store_index')}}">Store</a>
 						</li>
 						<li class="nav-item ">
 							<a class="nav-link font family" href="{{ path('app_logout')}}">Logout
@@ -68,7 +65,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#">apple</a>
+		<a class="navbar-brand"><img src="{{ asset('images/home/logoshop.jpg') }}" width="100" height="100"></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 		</button>
@@ -130,12 +127,6 @@
 {% block footer %}
 <div class ="text-center">
 <a > team : gia khanh thanh pham trinh khanh </a>
- <ul>
-    <li  <a href="https://github.com/gikhanh">Github</a></li>
-    <li>
-      <p>👋</p>
-    </li>
-  </ul>
 </div>
 </div>
 </div>

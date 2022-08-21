@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ColorRepository;
+use App\Repository\StoreRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ColorRepository::class)]
-class Color
+#[ORM\Entity(repositoryClass: StoreRepository::class)]
+class Store
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,14 +21,13 @@ class Color
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
 
-    #[ORM\OneToMany(mappedBy: 'color', targetEntity: Phone::class)]
+    #[ORM\ManyToMany(targetEntity: Phone::class, mappedBy: 'store')]
     private $phones;
 
     public function __toString()
     {
-        return $this -> name;
+        return $this -> name; 
     }
-
     public function __construct()
     {
         $this->phones = new ArrayCollection();
@@ -75,7 +74,7 @@ class Color
     {
         if (!$this->phones->contains($phone)) {
             $this->phones[] = $phone;
-            $phone->setColor($this);
+            $phone->addStore($this);
         }
 
         return $this;
@@ -84,10 +83,7 @@ class Color
     public function removePhone(Phone $phone): self
     {
         if ($this->phones->removeElement($phone)) {
-            // set the owning side to null (unless already changed)
-            if ($phone->getColor() === $this) {
-                $phone->setColor(null);
-            }
+            $phone->removeStore($this);
         }
 
         return $this;

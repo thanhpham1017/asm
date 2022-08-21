@@ -6698,6 +6698,20 @@
             "license": [
                 "MIT"
             ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Doctrine Project",
+                    "homepage": "https://www.doctrine-project.org"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
             "description": "Symfony DoctrineFixturesBundle",
             "homepage": "https://www.doctrine-project.org",
             "keywords": [

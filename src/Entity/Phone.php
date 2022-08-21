@@ -39,12 +39,23 @@ class Phone
     #[ORM\OneToMany(mappedBy: 'phone', targetEntity: Order::class)]
     private $orders;
 
+    #[ORM\ManyToMany(targetEntity: Store::class, inversedBy: 'phones')]
+    private $store;
+
+    
+
     public function __construct()
     {
         $this->producers = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->store = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this -> title; 
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -98,7 +109,6 @@ class Phone
         return $this;
     }
 
-      //Note: bỏ string ở hàm get & set Image
       public function getImage(): ?string
       {
           return $this->image;
@@ -173,6 +183,30 @@ class Phone
                 $order->setPhone(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Store>
+     */
+    public function getStore(): Collection
+    {
+        return $this->store;
+    }
+
+    public function addStore(Store $store): self
+    {
+        if (!$this->store->contains($store)) {
+            $this->store[] = $store;
+        }
+
+        return $this;
+    }
+
+    public function removeStore(Store $store): self
+    {
+        $this->store->removeElement($store);
 
         return $this;
     }
